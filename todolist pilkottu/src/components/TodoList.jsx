@@ -20,8 +20,8 @@ export default function TodoList() {
 
     return (
         <>
-            <input name="desc" placeholder="Description" onChange={handleChange} value={todo.desc} />
-            <input name="date" placeholder="Date" onChange={handleChange} value={todo.date} />
+            Description: <input name="desc" placeholder="Description" onChange={handleChange} value={todo.desc} />
+            Date: <input name="date" placeholder="Date" onChange={handleChange} value={todo.date} />
             <button onClick={addTodo}>Add</button>
             <TodoTable todos={todos} deleteTodo={deleteTodo} />
         </>
