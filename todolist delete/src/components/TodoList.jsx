@@ -19,9 +19,15 @@ export default function TodoList() {
 
     return (
         <>
-            Description: <input name="desc" placeholder="Description" onChange={handleChange} value={todo.desc} />
-            Date: <input name="date" placeholder="Date" onChange={handleChange} value={todo.date} />
-            <button onClick={addTodo}>Add</button>
+            <div id="topbar">
+            <h1>Simple Todolist</h1>
+            </div>
+            <fieldset>
+                <legend>Add todo:</legend>
+                Description:<input name="desc" placeholder="Description" onChange={handleChange} value={todo.desc} />
+                Date:<input name="date" placeholder="Date" onChange={handleChange} value={todo.date} />
+                <button onClick={addTodo}>Add</button>
+            </fieldset>
             <table>
                 <tbody>
                     <tr>
