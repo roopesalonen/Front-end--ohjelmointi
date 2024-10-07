@@ -48,7 +48,7 @@ export default function TodoList() {
     ];
 
     return (
-        <>
+        <div className="content">
             <Stack
                 direction="row"
                 spacing={2}
@@ -87,6 +87,6 @@ export default function TodoList() {
                     rowSelection="single"
                 />
             </div>
-        </>
+        </div>
     );
 }
