@@ -62,19 +62,19 @@ export default function TodoList() {
                     placeholder="Description"
                     onChange={e => setTodo({ ...todo, desc: e.target.value })}
                     value={todo.desc} />
-                    <Select
-                        variant="standard"
-                        value={todo.priority}
-                        onChange={e => setTodo({ ...todo, priority: e.target.value })}
-                        displayEmpty
-                    >
-                        <MenuItem disabled value="">
-                            <em>Priority</em> {}
-                        </MenuItem>
-                        <MenuItem value="High">High</MenuItem>
-                        <MenuItem value="Medium">Medium</MenuItem>
-                        <MenuItem value="Low">Low</MenuItem>
-                    </Select>
+                <Select
+                    variant="standard"
+                    value={todo.priority}
+                    onChange={e => setTodo({ ...todo, priority: e.target.value })}
+                    displayEmpty
+                >
+                    <MenuItem disabled value="">
+                        <em>Priority</em> { }
+                    </MenuItem>
+                    <MenuItem value="High">High</MenuItem>
+                    <MenuItem value="Medium">Medium</MenuItem>
+                    <MenuItem value="Low">Low</MenuItem>
+                </Select>
                 <Button variant="outlined" color="success" size="small" onClick={addTodo}>Add</Button>
                 <Button variant="outlined" color="error" size="small" endIcon={<DeleteIcon />} onClick={handleDelete}>Delete</Button>
             </Stack>
