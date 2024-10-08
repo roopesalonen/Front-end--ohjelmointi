@@ -2,6 +2,7 @@ import App from './App';
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
+import Error from './components/Error';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import React from 'react';
@@ -10,6 +11,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Error />,
     children: [
       {
         element: <Home />,
