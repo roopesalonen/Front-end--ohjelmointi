@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>React getting started</title>
+</head>
+
+<body>
+    <!-- Root container for react components -->
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        function Trivia() {
+            const [data, setData] = React.useState({});
+            const [answer, setAnswer] = React.useState("");
+
+            const Question = () => {
+                fetch('https://opentdb.com/api.php?amount=1')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(response.statusText);
+                        }
+                        return response.json();
+                    })
+                    
+                    .then(responseData => {
+                        setData(responseData.results[0]);
+                    })
+
+                    .catch(err => {
+                        alert('Yritä hetken kuluttua uudelleen');
+                    });
+            }
+
+            const Answer = () => {
+                setAnswer("Answer: " + data.correct_answer);
+            }
+
+
+            return (
+                <div>
+                    <p>Question: {data.question}</p>
+                    <button onClick={Question}>New question</button>
+                    <button onClick={Answer}>Show answer</button>
+                    <div>{answer}</div>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<Trivia />);
+    </script>
+</body>
+
+</html>

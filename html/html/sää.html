@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>React getting started</title>
+</head>
+
+<body>
+    <!-- Root container for react components -->
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        const Weather = () => {
+            const [temp, setTemp] = React.useState('');
+            const [weather, setWeather] = React.useState('');
+            const [icon, setIcon] = React.useState('');
+
+            React.useEffect(() => {
+                fetch('https://api.openweathermap.org/data/2.5/weather?q=Helsinki&APPID=bbdfa6873d54825de9ef398592275b80&units=metric')
+                    .then(response => response.json())
+                    .then(responseData => {
+                        setTemp(responseData.main.temp.toFixed(1));
+                        setWeather(responseData.weather[0].main);
+                        setIcon(responseData.weather[0].icon);
+                    });
+            }, [])
+
+            return (
+                <div>
+                    <p>Temperature: {temp} Celsius</p>
+                    <p>Weather: {weather}</p>
+                    <img src={"http://openweathermap.org/img/wn/" + icon + "@2x.png"} />
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<Weather />);
+    </script>
+</body>
+
+</html>
